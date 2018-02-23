@@ -11,9 +11,9 @@
     <title>{{ config('app.name', 'AskAnything') }}</title>
 
     <!-- Styles -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/askanything.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -33,10 +33,14 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 	<script>
 	@if(Session::has('success'))
 		toastr.success('{{ Session::get('success')}}')
 	@endif
 	</script>
+	<script>
+	@yield('javascript')
+</script>
 </body>
 </html>

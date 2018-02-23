@@ -8,10 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'AskAnything') }}</title>
 
     <!-- Styles -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -24,12 +24,20 @@
 	<div class="container">	
 		<div class="row">
 			<div class="col-md-4">
-				<a href="{{ route('threads.create') }}" class="btn btn-secondary form-control">Ask a Question</a>
-				<br>
-				<br>
-				<a href="{{ route('user.questions') }}" class="btn btn-secondary form-control">My Questions</a>
-				<br>
-				<br>
+				@auth
+					<a href="{{ route('threads.create') }}" class="btn btn-secondary form-control">Ask a Question</a>
+					<br>
+					<br>				
+					<a href="{{ route('user.questions') }}" class="btn btn-secondary form-control">My Questions</a>
+					@if(Auth::user()->admin)
+						<br>
+						<br>
+						<a href="{{ route('channels.index') }}" class="btn btn-secondary form-control">Channels Settings</a>
+					@endif
+					<br>
+					<br>
+				@endauth
+				
 				<div class="card card-default">	
 					<div class="card-header">Channels</div>
 					<div class="card-body">

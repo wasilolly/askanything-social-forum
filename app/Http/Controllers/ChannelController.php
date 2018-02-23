@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ChannelController extends Controller
 {
     public function  __construct(){
-		$this->middleware('admin');
+		$this->middleware('admin')->except('show');
 	}
 	/**
      * Display a listing of the resource.
@@ -62,7 +62,7 @@ class ChannelController extends Controller
     public function show($slug)
     {
         $channel = Channel::where('slug', $slug)->first();
-		return view('forum.channel',['threads'=> $channel->threads()->paginate(4)]);
+		return view('forum.threads.index',['threads'=> $channel->threads()->paginate(4)]);
     }
 
     /**

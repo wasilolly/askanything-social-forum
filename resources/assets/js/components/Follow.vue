@@ -6,7 +6,7 @@
 		</p>
 		
 		<p class="text-center" v-if="!loading">
-			<button class="btn btn-success" v-if="status == 0" @click="follow">Follow</button>
+			<button class="btn btn-secondary" v-if="status == 0" @click="follow">Follow</button>
 			
 			<div class="dropdown text-center" v-if="status == 'follower'">
 				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" 

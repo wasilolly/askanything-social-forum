@@ -17,7 +17,7 @@
 				<br>
 			@endforeach
 		@else
-			<h1>No Followings</h1>
+			<h1 class="text-center">No Followings to see here</h1>
 		@endif
 	</div>
 </div>

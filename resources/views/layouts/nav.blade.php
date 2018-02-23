@@ -8,19 +8,20 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<!-- Left Side Of Navbar -->
-			@auth
-				<ul class="navbar-nav mr-auto">					
-					<li><a class="nav-link" href="{{ route('profile', ['slug'=>Auth::user()->slug]) }}">My Profile</a></li>
+			<!-- Left Side Of Navbar -->			
+				<ul class="navbar-nav mr-auto">
+					@auth					
+						<li><a class="nav-link" href="{{ route('profile', ['slug'=>Auth::user()->slug]) }}">My Profile</a></li>
+					@endauth
 					<li><a class="nav-link" href="{{ route('forum') }}">Forum</a></li>
 				</ul>
-			@endauth
+				
 			<!-- Right Side Of Navbar -->
 			<ul class="navbar-nav ml-auto">
 				<!-- Authentication Links -->
 				@auth
 					@if(Auth::user()->admin)
-						<li><a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a></li>
+						<li><a class="nav-link" href="{{ route('users') }}">Users</a></li>
 					@endif
 				@endauth
 				

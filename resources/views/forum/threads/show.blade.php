@@ -5,9 +5,19 @@
 <div class="card card-default">				
 	<div class="card-header">
 		<img src="{{ $thread->user->avatar }}" alt="" width="40px" height="40px">&nbsp;&nbsp;&nbsp;
-		<span>{{ $thread->user->name }}, <b>({{ $thread->user->points }})</b></span>	
-		
-		
+		<span>{{ $thread->user->name }}, <b>({{ $thread->user->points }})</b></span>
+		@auth
+			@if(Auth::user()->admin)
+			<span class="float-right">	
+				<form action="{{ route('threads.destroy', ['thread'=>$thread])}}" method="POST"
+					onsubmit="return confirm('Thread and its replies will be deleted. Are you sure?')">
+							{{ csrf_field() }}
+							{{ method_field('DELETE')}}						
+					<button class="btn btn-xs btn-secondary float-right" type="submit">Delete</button>
+				</form>
+			</span>
+			@endif
+		@endauth
 	</div>
 
 	<div class="card-body">
@@ -21,7 +31,8 @@
 			{{ ($thread->content) }}					
 		</p>
 		
-	</div>	
+	</div>
+	
 </div>
 <br>
 @foreach($thread->replies as $r)
@@ -59,11 +70,12 @@
 				</div>
 			</form>
 		@else	
-			<div class="text-center">
+			<div class="card-body text-center">
 				<h2>Sign in to leave a reply</h2>
 			</div>
 		@endif
 	</div>
 </div>
-
+<br>
+		<br>
 @endsection

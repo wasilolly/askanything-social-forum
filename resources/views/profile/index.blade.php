@@ -3,19 +3,17 @@
 @section('content')
 
 <div class="col-md-12 text-center">
-	<button type="button" class="btn btn-primary">
-		Threads <a href="{{ route('profile.threads', ['slug'=>$user->slug] )}}" 
-		class="badge badge-light">{{ $user->threads->count() }}</a>
-	</button>
+	<a href="{{ route('profile.threads', ['slug'=>$user->slug] )}}" class="btn btn-primary">
+		Threads <span class="badge badge-light">{{ $user->threads->count() }}</span>
+	</a>
+		
+	<a href="{{ route('profile.followers', ['slug'=>$user->slug] )}}"  class="btn btn-primary">
+		Followers <span class="badge badge-light">{{ $user->followersCount() }}</span>
+	</a>
 	
-	<button type="button"  class="btn btn-primary">
-		Followers <a href="{{ route('profile.followers', ['slug'=>$user->slug] )}}" 
-		class="badge badge-light">{{ $user->followersCount() }}</a>
-	</button>
-	<button type="button" class="btn btn-primary">
-		Following <a href="{{ route('profile.followings', ['slug'=>$user->slug] )}}" 
-		class="badge badge-light">{{ $user->followingsCount() }}</a>
-	</button>
+    <a href="{{ route('profile.followings', ['slug'=>$user->slug] )}}" class="btn btn-primary">
+		Following <span class="badge badge-light">{{ $user->followingsCount() }}</span>
+	</a>	
 	<br>
 	<hr>
 </div>

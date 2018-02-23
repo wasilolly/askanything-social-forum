@@ -27,8 +27,7 @@ Route::get('/forum/channel/{slug}', 'ChannelController@show')->name('channel.sho
 Route::get('/forum/thread/{slug}', 'ThreadController@show')->name('thread.show');
 Route::post('/forum/thread/reply/{id}', 'ReplyController@store')->name('thread.reply');
 
-Route::get('/dashboard', 'AdminController@index')->name('dashboard');
-Route::get('/dashboard/users', 'AdminController@users')->name('dashboard.users');
+Route::get('/dashboard/users', 'AdminController@users')->name('users');
 Route::get('/dashboard/user/admin/{id}', 'AdminController@admin')->name('user.admin');
 Route::get('/dashboard/user/revoke/{id}', 'AdminController@revokeAdmin')->name('user.revoke');
 Route::delete('/dashboard/user/delete/{id}', 'AdminController@userDelete')->name('user.delete');

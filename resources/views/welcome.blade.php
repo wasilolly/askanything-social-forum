@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                   Ask away....
+                   <a href="{{ route('forum') }}" class="btn btn-secondary">Ask away....</a>
                 </div>
 
                 <div class="links">

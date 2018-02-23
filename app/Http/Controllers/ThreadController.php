@@ -68,7 +68,7 @@ class ThreadController extends Controller
      */
     public function edit($slug)
     {
-        return view('threads.edit', ['thread' => Thraed::where('slug', $slug)->first()]);
+        return view('threads.edit', ['thread' => Thread::where('slug', $slug)->first()]);
     }
 
     /**
@@ -100,6 +100,12 @@ class ThreadController extends Controller
      */
     public function destroy(Thread $thread)
     {
-       //
+       $thread = Thread::findOrFail($thread->id);
+	   foreach($thread->replies as $r){
+		   $r->delete();
+	   }
+	   $thread->delete();
+	   Session('success', 'Thread Deleted');
+	   return redirect()->route('forum');
     }
 }
