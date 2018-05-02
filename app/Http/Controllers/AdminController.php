@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use App\Thread;
 use App\User;
+use App\Follow;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -37,8 +38,25 @@ class AdminController extends Controller
 	
 	public function userDelete($id){
 		$user=User::findOrFail($id);
+		foreach($user->threads as $thread){
+			$thread->delete();
+		}
+		foreach($user->replies as $reply){
+			$reply->delete();
+		}
+		foreach($user->followersIds() as $follower){
+			$followings=Follow::where('userfollowing_id',$id)->first();
+			$followings->delete();
+		}
+		foreach($user->followingsIds() as $following){
+			$follower=Follow::where('follower_id',$id)->get();
+			$follower->delete();
+		}
+		
 		$user->profile->delete();
 		$user->delete();
+		
+		Session::flash('success', 'User Deleted');
 		return redirect()->back();
 	}
 }

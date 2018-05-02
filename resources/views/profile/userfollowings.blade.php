@@ -9,9 +9,11 @@
 					<div class="card-body">
 						<img src="{{ $following->avatar }}" alt="" width="40px" height="40px">&nbsp;&nbsp;&nbsp;
 						<span>{{ $following->name }}</span>
+						@auth
 						<div class="float-right">
 							<follow :profile_user_id="{{ $following->id }}"></follow>
 						</div>
+						@endauth
 					</div>
 				</div>			
 				<br>

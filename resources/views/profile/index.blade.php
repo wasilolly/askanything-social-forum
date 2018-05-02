@@ -35,7 +35,8 @@
 				<strong>Location: </strong> <small><b>{{ $user->profile->location }}</b></small>
 			</p>
 		</div>		
-	</div>	
+	</div>
+    @auth	
 	@if(Auth::id() != $user->id)		
 		<hr>
 		<div class="card card-default">		
@@ -44,6 +45,7 @@
 			</div>	
 		</div>
 	@endif
+	@endauth
 	<hr>	
 	<div class="card card-default">
 		<div class="card-header text-center"><b>About me</b></div>
