@@ -22,7 +22,7 @@ Route::get('/follow/{id}', 'FollowController@follow');
 Route::get('/unfollow/{id}', 'FollowController@unFollow');
 
 Route::get('/forum', 'ForumController@index')->name('forum');
-Route::get('/forum/myquestions', 'ForumController@userQuestions')->name('user.questions');
+Route::get('/forum/myquestions', 'ForumController@userQuestions')->name('user.questions')->middleware('auth');
 Route::get('/forum/channel/{slug}', 'ChannelController@show')->name('channel.show');
 Route::get('/forum/thread/{slug}', 'ThreadController@show')->name('thread.show');
 Route::post('/forum/thread/reply/{id}', 'ReplyController@store')->name('thread.reply');

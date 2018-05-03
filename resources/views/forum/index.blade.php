@@ -24,19 +24,21 @@
 	<div class="container">	
 		<div class="row">
 			<div class="col-md-4">
-				@auth
+				
 					<a href="{{ route('threads.create') }}" class="btn btn-secondary form-control">Ask a Question</a>
 					<br>
 					<br>				
 					<a href="{{ route('user.questions') }}" class="btn btn-secondary form-control">My Questions</a>
+					@auth
 					@if(Auth::user()->admin)
 						<br>
 						<br>
 						<a href="{{ route('channels.index') }}" class="btn btn-secondary form-control">Channels Settings</a>
 					@endif
+					@endauth
 					<br>
 					<br>
-				@endauth
+				
 				
 				<div class="card card-default">	
 					<div class="card-header">Channels</div>

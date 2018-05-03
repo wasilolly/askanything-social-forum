@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
-    
+    public function __construct(){
+		$this->middleware('auth')->only(['create']);
+	}
     /**
      * Show the form for creating a new resource.
      *
